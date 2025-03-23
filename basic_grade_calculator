@@ -1,0 +1,103 @@
+import numpy as np
+#Basic student grade calculator
+
+def main():
+    #Array to store the letters
+    grades = []
+    #Assign certain string with certain numbers
+    num_grades = {
+        "A":4,
+        "B":3,
+        "C":2,
+        "D":1,
+        "F":0
+    }
+    #Use this as the only accepted strings when asking the user to type a letter
+    check = ["A","B","C","D","F"]
+    #For loop, with range(6), the range(6) means that it will loop 6 times,
+    # or the amount based on what is in the range()
+    for i in range(6):
+        #while loop, while this is true keep going until you hit 6 loops
+        while True:
+            #ask the user for their input based on the prompt, make the user input capital letter using .upper()
+            ask_user = input(f"Enter a letter from A-F: ").upper()
+            #if the user response is within the accepted string that I put, then print message
+            if ask_user in check:
+                #print the message if the string is within the accepted strings
+                print("That is a valid response")
+                #add the string to the array, grades, append is to add and update the array based on the user input
+                grades.append(ask_user)
+                #break out of loop if the loop hits 6 times, or until it hits the number that is put in the range()
+                break
+            else:
+                #If the user input is not the same as the accepted string that ive put, print message to try again
+                print("Not a valid response try again")
+    #Put this outside the loop so it can better print after the user put the letters to be stored in the array
+    #Convert the string letters into numbers that ive assigned on num_grades
+    num_grad_cal = np.array([num_grades[g] for g in grades])
+    #calculate the average grade after converting the string to the assigned numbers, using numpy
+    average_grade = np.mean(num_grad_cal)
+    #calculate the higher number based on the user input
+    max_grade = np.max(num_grad_cal)
+    #calcukate the lowest number based on the user input
+    min_grade = np.min(num_grad_cal)
+    #Print out the average, max, and min points after it's been converted
+    print(f"Highest grade is {max_grade}")
+    print(f"Lowest grade is {min_grade}")
+    print(f"The average point grade is,", average_grade)
+
+
+    #old code, I've been using too much if, elif, and else statements, use for loop and range, more practice
+    #code works, but next time try to make more simplifier
+    """
+    while True:
+        ask_user = input("Welcome, enter a letter from A-F: ").upper()
+        if ask_user in check:
+            print("That is a valid grade")
+        else:
+            print("Not a valid option")
+        ask_user_2 = input("Enter another letter from A-F: ").upper()
+        if ask_user_2 in check:
+            print("That is a valid grade")
+        else:
+            print("Not a valid option")
+        ask_user_3 = input("Enter another letter from A-F: ").upper()
+        if ask_user_3 in check:
+            print("That is a valid grade")
+        else:
+            print("Not a valid option")
+        ask_user_4 = input("Enter another letter from A-F: ").upper()
+        if ask_user_4 in check:
+            print("That is a valid grade")
+        else:
+            print("Not a valid option")
+        ask_user_5 = input("Enter another letter from A-F: ").upper()
+        if ask_user_5 in check:
+            print("That is a valid grade")
+        else:
+            print("Not a valid option")
+        ask_user_6 = input("Enter another letter from A-F: ").upper()
+        if ask_user_6 in check:
+            print("That is a valid grade")
+        else:
+            print("Not a valid option")
+
+        grades.append(ask_user)
+        grades.append(ask_user_2)
+        grades.append(ask_user_3)
+        grades.append(ask_user_4)
+        grades.append(ask_user_5)
+        grades.append(ask_user_6)
+        
+        num_grad_cal = np.array([num_grades[g] for g in grades])
+        average_grade = np.mean(num_grad_cal)
+        max_grade = np.max(num_grad_cal)
+        min_grade = np.min(num_grad_cal)
+        print(f"Highest grade is {max_grade}")
+        print(f"Lowest grade is {min_grade}")
+        print(f"The average point grade is,", average_grade)
+        break
+      """
+      #this is my old code, i put it here just to compare and remind myself to make my code easier for me
+if __name__ == "__main__":
+    main()
